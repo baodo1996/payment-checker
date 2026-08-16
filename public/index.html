@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🖱️ Razer Order Checker</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .product-hero {
+      background: linear-gradient(135deg, #1e2130 0%, #252839 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .product-hero .product-icon {
+      font-size: 3.5rem;
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      background: var(--accent-glow);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-hero .product-info { flex: 1; }
+    .product-hero .product-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
+    .product-hero .product-sku { font-size: 0.78rem; color: var(--text-muted); }
+    .product-hero .product-url { font-size: 0.78rem; color: var(--accent); word-break: break-all; margin-top: 4px; }
+    .product-hero .product-price {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--success);
+      flex-shrink: 0;
+      text-align: right;
+    }
+    .input-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .input-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 700px) {
+      .product-hero { flex-direction: column; text-align: center; }
+      .input-row-3, .input-row-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-icon">🛒</span>
+        <div>
+          <h1>Razer Checker</h1>
+          <p class="brand-sub">Gigantus V2 Pro</p>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-tab="main">
+          <span class="nav-icon">📦</span> Single Test
+        </a>
+        <a href="#" class="nav-item" data-tab="batch">
+          <span class="nav-icon">📊</span> Batch Test
+        </a>
+        <a href="#" class="nav-item" data-tab="history">
+          <span class="nav-icon">📜</span> Lịch Sử Test
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="status-indicator" id="serverStatus">
+          <span class="status-dot"></span>
+          <span class="status-text">Đang kiểm tra...</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+
+      <!-- ======== MAIN TAB ======== -->
+      <section class="tab-content active" id="tab-main">
+        <div class="page-header">
+          <h2>🖱️ Razer Order Checker</h2>
+          <p class="page-desc">Tự động test checkout cho Razer Gigantus V2 Pro</p>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-hero">
+          <div class="product-icon">🖱️</div>
+          <div class="product-info">
+            <div class="product-name">Razer Gigantus V2 Pro</div>
+            <div class="product-sku">SKU: RZ02-05490600-R3U1</div>
+            <div class="product-url">
+              <a href="https://www.razer.com/gaming-mouse-mats/razer-gigantus-v2-pro/RZ02-05490600-R3U1" target="_blank" style="color:var(--accent);">
+                razer.com/gaming-mouse-mats/razer-gigantus-v2-pro
+              </a>
+            </div>
+          </div>
+          <div class="product-price">$99.99</div>
+        </div>
+
+        <!-- Customer Info -->
+        <div class="card">
+          <div class="card-header"><h3>👤 Thông Tin Khách Hàng</h3></div>
+          <div class="card-body">
+            <div class="input-row-2">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" id="cFirstName" class="form-input" value="John" placeholder="First Name">
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" id="cLastName" class="form-input" value="Doe" placeholder="Last Name">
+              </div>
+            </div>
+            <div class="input-row-2">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="cEmail" class="form-input" value="johndoe.test@gmail.com" placeholder="email@example.com">
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="text" id="cPhone" class="form-input" value="2125551234" placeholder="Phone number">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shipping Info -->
+        <div class="card">
+          <div class="card-header"><h3>📬 Địa Chỉ Giao Hàng</h3></div>
+          <div class="card-body">
+            <div class="form-group">
+              <label>Street Address</label>
+              <input type="text" id="sStreet" class="form-input" value="42 Broadway" placeholder="Street address">
+            </div>
+            <div class="form-group">
+              <label>Apt / Suite (optional)</label>
+              <input type="text" id="sApt" class="form-input" value="Apt 12-01" placeholder="Apartment, suite, unit...">
+            </div>
+            <div class="input-row-3">
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" id="sCity" class="form-input" value="New York" placeholder="City">
+              </div>
+              <div class="form-group">
+                <label>State</label>
+                <input type="text" id="sState" class="form-input" value="NY" placeholder="State">
+              </div>
+              <div class="form-group">
+                <label>ZIP Code</label>
+                <input type="text" id="sZip" class="form-input" value="10004" placeholder="ZIP">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Country</label>
+              <input type="text" id="sCountry" class="form-input" value="US" placeholder="Country">
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Info -->
+        <div class="card">
+          <div class="card-header"><h3>💳 Thông Tin Thanh Toán</h3></div>
+          <div class="card-body">
+            <p style="font-size:0.78rem;color:var(--warning);margin-bottom:12px;">
+              ⚠️ Dùng thẻ test — KHÔNG tính tiền thật. Chỉ để kiểm tra hệ thống còn hoạt động.
+            </p>
+            <div class="form-group">
+              <label>Card Number</label>
+              <input type="text" id="pCardNumber" class="form-input" value="4111111111111111" placeholder="Card number">
+            </div>
+            <div class="form-group">
+              <label>Card Holder Name</label>
+              <input type="text" id="pCardName" class="form-input" value="JOHN DOE" placeholder="Name on card">
+            </div>
+            <div class="input-row-3">
+              <div class="form-group">
+                <label>Expiry Month</label>
+                <input type="text" id="pExpMonth" class="form-input" value="12" placeholder="MM">
+              </div>
+              <div class="form-group">
+                <label>Expiry Year</label>
+                <input type="text" id="pExpYear" class="form-input" value="2028" placeholder="YYYY">
+              </div>
+              <div class="form-group">
+                <label>CVV</label>
+                <input type="text" id="pCvv" class="form-input" value="123" placeholder="CVV">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RUN BUTTON -->
+        <div class="card" style="border:2px solid var(--success);">
+          <div class="card-body" style="text-align:center; padding:24px;">
+            <p style="margin-bottom:16px;color:var(--text-secondary);">
+              Flow: <strong>Product → Add to Cart → Checkout → Fill Info → Submit → Result</strong>
+            </p>
+            <button class="btn btn-success btn-lg" id="btnRun" onclick="runFullCheckout()" style="font-size:1.1rem;padding:16px 48px;">
+              <span class="btn-icon">▶️</span> Chạy Test Đơn Hàng Razer
+            </button>
+            <div style="margin-top:10px;">
+              <label style="display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--text-muted);cursor:pointer;">
+                <input type="checkbox" id="chkHeadful" style="cursor:pointer;"> 🖥️ Headful mode — hiển thị trình duyệt để debug
+              </label>
+            </div>
+            <div id="runResult" style="margin-top:20px;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======== BATCH TEST TAB ======== -->
+      <section class="tab-content" id="tab-batch">
+        <div class="page-header">
+          <h2>📊 Batch Test</h2>
+          <p class="page-desc">
+            Paste dữ liệu pipe-separated — mỗi dòng là 1 test case. Tool chạy tuần tự và báo kết quả.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>📥 Dữ Liệu Pipe-Separated</h3>
+            <span style="font-size:0.78rem;color:var(--text-muted);">
+              Format: <code>CARD|MM|YY|CVV|NAME|STREET|CITY|STATE|ZIP|</code>
+            </span>
+          </div>
+          <div class="card-body">
+            <textarea id="batchInput" class="form-input json-editor" style="min-height:280px;"
+              placeholder="Paste data vào đây...&#10;&#10;4100390687607271|05|28|624|Lidia Perez|PO Box 453|Lithonia|GA|30058||&#10;4815820308341765|08|29|301|Monica Beltran|979 Woodland Pkwy|San Marcos|CA|92069||"
+              spellcheck="false">4100390687607271|05|28|624|Lidia Perez|PO Box 453|Lithonia|GA|30058||
+4815820308341765|08|29|301|Monica Beltran|979 Woodland Pkwy 101-98|San Marcos|CA|92069||
+4628450049991707|09|26|335|Frankie Day|266 Geylang Rd|Singapore|389321||
+4628450060756203|01|28|610|Harmony Lindsey|7500A BEACH ROAD, #04-313|Singapore|199591||
+4628450049560536|09|26|027|Riley Allen|Evan Lim Warehouse 197 Ubi Avenue 4 #02-00|Singapore|408802||
+4628450051763135|05|27|771|Saige Riggs|Level B1 Supreme Court of 1 Supreme Court Lane|Singapore|178879||
+4744880142576121|12|28|511|MYNUL ISLAM|28 METROPOLITAN OVAL|BRONX|NY|10462||</textarea>
+            <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;">
+              <button class="btn btn-primary" onclick="parseBatch()">
+                <span>🔍</span> Parse & Hiển Thị
+              </button>
+              <button class="btn btn-success btn-lg" id="btnBatchRun" onclick="runBatch()">
+                <span>▶️</span> Chạy Tất Cả Test Cases
+              </button>
+              <button class="btn btn-danger btn-lg" id="btnBatchStop" onclick="stopBatch()" style="display:none;">
+                <span>⏹️</span> Dừng Lại
+              </button>
+            </div>
+            <div id="batchParseResult" style="margin-top:16px;"></div>
+          </div>
+        </div>
+
+        <!-- Results Table -->
+        <div class="card" id="batchResultCard" style="display:none;">
+          <div class="card-header">
+            <h3>📊 Kết Quả Batch Test</h3>
+            <span id="batchSummary"></span>
+          </div>
+          <div class="card-body" style="padding:0;overflow-x:auto;">
+            <table id="batchResultTable" style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+              <thead>
+                <tr style="background:var(--bg-hover);text-align:left;">
+                  <th style="padding:10px 14px;border-bottom:1px solid var(--border);">#</th>
+                  <th style="padding:10px 14px;border-bottom:1px solid var(--border);">Name</th>
+                  <th style="padding:10px 14px;border-bottom:1px solid var(--border);">Card</th>
+                  <th style="padding:10px 14px;border-bottom:1px solid var(--border);">City</th>
+                  <th style="padding:10px 14px;border-bottom:1px solid var(--border);">Status</th>
+                  <th style="padding:10px 14px;border-bottom:1px solid var(--border);">Time</th>
+                </tr>
+              </thead>
+              <tbody id="batchTbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======== HISTORY TAB ======== -->
+      <section class="tab-content" id="tab-history">
+        <div class="page-header">
+          <h2>📜 Lịch Sử Test</h2>
+          <p class="page-desc">Kết quả các lần test trước</p>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <button class="btn btn-secondary btn-sm" onclick="loadHistory()" style="margin-bottom:16px;">🔄 Tải Lại</button>
+            <div class="history-list" id="historyList">
+              <p class="text-muted">Đang tải...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="app.js"></script>
+</body>
+</html>

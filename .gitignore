@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Chrome profile (cookies, sessions — NEVER commit)
+.browser-profile/
+
+# Freebuff internal state
+.freebuff/
+
+# Runtime results (contain payment data)
+results/
+
+# Logs
+*.log
+server.log
+
+# Local order data (may contain payment info)
+# Copy config/order-data.example.json -> config/order-data.json to use
+config/order-data.json
+
+# OS junk
+.DS_Store
+Thumbs.db

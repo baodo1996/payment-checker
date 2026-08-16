@@ -1,0 +1,43 @@
+{
+  "_comment": "=== RAZER ORDER CHECKER === Chỉ test 1 sản phẩm: Razer Gigantus V2 Pro",
+
+  "product": {
+    "name": "Razer Gigantus V2 Pro",
+    "url": "https://www.razer.com/gaming-mouse-mats/razer-gigantus-v2-pro/RZ02-05490600-R3U1",
+    "sku": "RZ02-05490600-R3U1",
+    "quantity": 1,
+    "price": 99.99
+  },
+
+  "checkout": {
+    "steps": ["product", "cart", "shipping", "payment"],
+    "successURLContains": ["checkout/success", "order-confirmation", "thank-you", "order/success", "success", "complete"],
+    "successTextContains": ["thank you for your order", "order confirmed", "order number:", "order placed", "confirmation"]
+  },
+
+  "customer": {
+    "fullName": "John Doe",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "johndoe.test@gmail.com",
+    "phone": "2125551234"
+  },
+
+  "shipping": {
+    "street": "42 Broadway",
+    "apt": "Apt 12-01",
+    "city": "New York",
+    "state": "NY",
+    "zipCode": "10004",
+    "country": "US"
+  },
+
+  "payment": {
+    "cardNumber": "4111111111111111",
+    "cardHolderName": "JOHN DOE",
+    "cardExpiry": "12/28",
+    "cardExpiryMonth": "12",
+    "cardExpiryYear": "2028",
+    "cardCVV": "123"
+  }
+}

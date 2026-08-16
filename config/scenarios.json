@@ -1,0 +1,50 @@
+[
+  {
+    "id": "default-visa",
+    "name": "Default - Visa Checkout",
+    "description": "Kiểm tra thanh toán với thẻ Visa",
+    "url": "https://your-payment-page.com/checkout",
+    "cardType": "visa",
+    "enabled": true,
+    "createdAt": "2026-07-31T00:00:00.000Z",
+    "selectors": {
+      "cardNumber": "#card-number, input[name='cardNumber'], [data-field='card-number']",
+      "cardName": "#card-holder, input[name='cardHolder'], [data-field='card-name']",
+      "cardExpiry": "#card-expiry, input[name='expiry'], [data-field='card-expiry']",
+      "cardCvv": "#card-cvv, input[name='cvv'], [data-field='card-cvv']",
+      "street": "#address, input[name='address'], [data-field='street']",
+      "city": "#city, input[name='city'], [data-field='city']",
+      "phone": "#phone, input[name='phone'], [data-field='phone']",
+      "email": "#email, input[name='email'], [data-field='email']",
+      "submitButton": "#btn-pay, button[type='submit'], .btn-checkout"
+    },
+    "successIndicator": {
+      "urlContains": ["success", "thank", "complete", "order", "cam-on", "thanh-cong", "don-hang"],
+      "textContains": ["success", "thank you", "completed", "cảm ơn", "thành công", "đơn hàng", "đã thanh toán"]
+    }
+  },
+  {
+    "id": "default-mastercard",
+    "name": "Default - Mastercard Checkout",
+    "description": "Kiểm tra thanh toán với thẻ Mastercard",
+    "url": "https://your-payment-page.com/checkout",
+    "cardType": "mastercard",
+    "enabled": true,
+    "createdAt": "2026-07-31T00:00:00.000Z",
+    "selectors": {
+      "cardNumber": "#card-number, input[name='cardNumber']",
+      "cardName": "#card-holder, input[name='cardHolder']",
+      "cardExpiry": "#card-expiry, input[name='expiry']",
+      "cardCvv": "#card-cvv, input[name='cvv']",
+      "street": "#address, input[name='address']",
+      "city": "#city, input[name='city']",
+      "phone": "#phone, input[name='phone']",
+      "email": "#email, input[name='email']",
+      "submitButton": "#btn-pay, button[type='submit'], .btn-checkout"
+    },
+    "successIndicator": {
+      "urlContains": ["success", "thank", "complete", "order", "cam-on", "thanh-cong", "don-hang"],
+      "textContains": ["success", "thank you", "completed", "cảm ơn", "thành công", "đơn hàng", "đã thanh toán"]
+    }
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "name": "payment-checker",
+  "version": "1.0.0",
+  "description": "Automated payment system checker - tự động kiểm tra hệ thống thanh toán",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "payment",
+    "checker",
+    "automation",
+    "testing"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "chrome-launcher": "^1.2.1",
+    "express": "^4.21.0",
+    "puppeteer": "^23.0.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}
